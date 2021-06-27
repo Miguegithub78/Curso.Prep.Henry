@@ -65,18 +65,20 @@ function asAmirror(str) {
   //Escribe tu código aquí
   var alt = new Array();
   var array = new Array();
-  array = str.split("");
+  array = str.split(" ");
+  console.log(array)
   str = "";
   array.forEach(element=>{
-    if (element !== " "){
-      alt.unshift(element);
-    }else{
-      str += alt.join("");
-      str += " ";
-      alt = [];
-    }
+      var strunido = element.split("").reverse().join("");
+      if (array[0] === element){
+        str += strunido;
+      }else{
+        str += " " + strunido;
+      }
+      
+      console.log(str);
   });
-  str += alt.join("");
+
  // console.log(str);
   return str;
 } 
@@ -89,15 +91,13 @@ function capicua(numero){
   //Escribe tu código aquí
   var str = numero.toString(10);
   var contador = 0;
-  do{
+  //do{
    // console.log(str.charAt(contador));
    // console.log(str.charAt(str.length - 1 - contador));
-    if (str.charAt(contador) === str.charAt(str.length - 1 - contador)){
-      contador ++;
-    }else{
+    if (str !== asAmirror(str)){
       return "No es capicua";
     }
-  }while (contador <= (str.length / 2));
+ // }while (contador <= (str.length / 2));
   return "Es capicua";
 }
 
